@@ -13,6 +13,7 @@
 // 9/06/2015        Khalid Ansari         ETM Upgrade - Moved BUG-00118397 to AccountSequenceController from Account to make sure the triggers 
 //                                                      execution happens in correct sequence. This will resolve the issue of GEO/Region/Sub getting empty
 // 07/06/2015       BHUMIKA UDANI        AIRWATCH CHANGES ADDED : afterUpdate 
+// 07/06/2017      Hem Chandra Gayal        GSS Cases ADDED : afterUpdate 
 //*********************************************************************************************************************************************************
 public with sharing class AccountSequenceController {
     
@@ -40,7 +41,10 @@ public with sharing class AccountSequenceController {
         
         //Calls method to update Account type & Ownership
         acctOwnerAssignment.updateAccountTypeAndOwnership();
-        
+		
+		//START - Calls method to update Account type & Ownership
+        acctOwnerAssignment.updateAccountTypeAndOwnership();
+        //END - Calls method to update Account type & Ownership
         //START - ETM Upgrade - Yet to be created - Khalid Ansari - Moved the logic of BUG-00118397 from Account trigger to AccountSequenceController
         //START - ETM Upgrade - BUG-00118397 - Khalid Ansari - Do not update territory to blank if a blank value is send by Informatica
         if (Trigger.isBefore && Trigger.isUpdate 
